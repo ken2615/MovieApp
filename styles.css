@@ -307,6 +307,14 @@ justify-items: center;
 padding: 1rem;
 }
 
+.search-results {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+grid-gap: 1rem;
+justify-items: center;
+padding: 1rem;
+}
+
 .movie-overlay {
   position: absolute;
   top: 0;

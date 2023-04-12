@@ -1,0 +1,376 @@
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 1rem;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+#searchInput {
+  margin-right: 0.5rem;
+}
+
+.logo-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+.category-title {
+  font-size: 2rem;
+  text-align: center;
+  background-color: #19264E;
+  color: #dfba7a;
+}
+#categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.category-btn {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #8F7F68;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.back-btn {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #B89761;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.category-btn:hover {
+  background-color: #B89761;
+}
+
+.movie-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.moving-movie-container {
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  padding: 0;
+  scroll-behavior: smooth;
+  background-image: url("Assest/banner4.jpg");
+  z-index: 1;
+}
+
+.header-half {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url("Assest/banner4.jpg");
+  background-size: cover;
+}
+
+@keyframes moveMovieCards {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.movie-cards-wrapper {
+  display: flex;
+  animation: moveMovieCards 30s linear infinite;
+}
+
+@media only screen and (min-width: 768px) {
+  .movie-card-container {
+    flex-wrap: nowrap;
+  }
+}
+
+.moving-movie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 14rem;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: #B89761;
+  color: white;
+  box-shadow: 0 0 15px #B89761;
+  transition: box-shadow 0.3s;
+  scroll-snap-align: center;
+  height: auto;
+  padding: 1rem;
+}
+
+.moving-movie-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.moving-movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.api-movie-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: #B89761;
+  color: white;
+  box-shadow: 0 0 15px #B89761;
+  transition: box-shadow 0.3s;
+  scroll-snap-align: center;
+  height: auto;
+  padding: 1rem;
+  overflow: hidden;
+  width: 18rem; 
+  height: 25rem; 
+}
+
+.api-movie-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.api-movie-card img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.movie-info {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+padding-top: 0.5rem;
+}
+
+.movie-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.api-movie-card:hover .movie-overlay {
+opacity: 1;
+}
+
+.overlay-content {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+width: 100%;
+}
+
+.overlay-title {
+font-size: 1.1rem;
+margin-bottom: 0.3rem;
+}
+
+.overlay-description {
+font-size: 0.9rem;
+margin-top: 0;
+margin-bottom: 0;
+}
+
+.overlay-rating {
+font-size: 1.1rem;
+margin-top: 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .api-movie-card {
+    width: 100%;
+  }
+}
+
+
+.logo-container {
+  display: flex;
+  margin-right: 1rem;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.login {
+margin-left: 1rem;
+margin-bottom: 1rem;
+}
+
+.login-container button {
+  margin-left: 0.5rem;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+#searchInput {
+  height: 30px;
+}
+
+.search-bar {
+width: 100%;
+}
+
+#categories {
+flex-direction: column;
+align-items: center;
+}
+
+.movie-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.moving-movie-container {
+width: 100%;
+}
+
+.movie-info h3 {
+font-size: 1.1rem;
+margin-bottom: 0.3rem;
+}
+
+.movie-info p {
+font-size: 0.9rem;
+margin-top: 0;
+margin-bottom: 0;
+}
+
+
+.movie-grid-container {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+grid-gap: 1rem;
+justify-items: center;
+padding: 1rem;
+}
+
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.api-movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.overlay-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.overlay-description {
+  font-size: 0.9rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.overlay-rating {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url("Assest/banner4.jpg");
+  padding: 1rem;
+  color: white;
+}
+
+.left-container {
+  padding-left: 10%;
+  padding-top: 3%;
+}
+
+.right-container {
+  padding-right: 5%;
+  padding-top: 3%;
+}
+
+.right-container img {
+  max-width: 100%;
+  height: auto;
+}
+

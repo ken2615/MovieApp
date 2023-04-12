@@ -1,135 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-    <section class="container forms">
-        <div class="form login">
-            <div class="form-content">
-                <header>Login</header>
-                <form action="#">
-                    <div class="field input-field">
-                        <input type="email" placeholder="Email" class="input">
-                    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Movie Web App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  </head>
+  <body>
+    <header class="header-half">
+      <div class="logo-container">
+        <img src="Assest/logo2.jpg" alt="SceneStream Logo" id="logo" />
+      </div>
+      <div class="nav-container">
+        <div class="login-container">
+          <button id="loginBtn" class="category-btn">Login</button>
+          <button id="logoutBtn" class="category-btn">Logout</button>
+        </div>
+        <div class="search-container">
+          <input type="search" id="searchInput" placeholder="Search movies..." />
+          <button id="searchBtn" class="category-btn">Search</button>
+        </div>
+      </div>
+    </header>
 
-                    <div class="field input-field">
-                        <input type="password" placeholder="Password" class="input">
-                        <i class='bx bx-hide eye' ></i>
-                    </div>
+    <main>
+      <section id="categories">
+        <div>
+          <button class="category-btn">Action</button>
+          <button class="category-btn">Comedy</button>
+          <button class="category-btn">Drama</button>
+          <button class="category-btn">Horror</button>
+          <button class="category-btn">Sci-Fi</button>
+          <button class="category-btn">Romance</button>
+          <button class="category-btn">Adventure</button>
+          <button class="category-btn">Anime</button>
+        </div>
+        <div>
+          <button class="category-btn">Thriller</button>
+          <button class="category-btn">Animation</button>
+          <button class="category-btn">Crime</button>
+          <button class="category-btn">Fantasy</button>
+          <button class="category-btn">Mystery</button>
+          <button class="category-btn">Documentary</button>
+          <button class="category-btn">Family</button>
+          <button class="category-btn">History</button>
+          
 
-                    <div class="form-link">
-                        <a href="#" class="forgot-pass">Forgot password</a>
-                    </div>
-
-                    <div class="field button-field">
-                        <button>Login</button>
-                    </div>
-
-                    <div class="form-link">
-                        <span>Don't have an account? <a href="#" class="link signup-link">Sign up</a></span>
-                    </div>
-
-                </form>
+        </div>
+        <button id="backBtn" class="back-btn">Back</button>
+      </section>
+      <section id="moving-movies">
+        <div id="movie-container" class="moving-movie-container">
+          <div class="movie-cards-wrapper">
+            <div class="hidden-space"></div>
+            <div class="moving-movie-card">
+              <img src="/Assest/poster1.jpg" alt="Movie Title">
+            </div>
+            <div class="moving-movie-card">
+                <img src="/Assest/poster2.jpg" alt="Movie Title">
+            </div>
+            <div class="moving-movie-card">
+                <img src="/Assest/poster3.jpg" alt="Movie Title">
+            </div>
+            <div class="moving-movie-card">
+                <img src="/Assest/poster 4.jpg" alt="Movie Title">
+            </div>
+            <div class="moving-movie-card">
+                <img src="/Assest/poster5.jpg" alt="Movie Title">
+            </div>
+            <div class="moving-movie-card">
+                <img src="/Assest/poster 6.jpg" alt="Movie Title">
+            </div>
+            <div class="moving-movie-card">
+                <img src="/Assest/poster 7.jpg" alt="Movie Title">
+            </div>
+            <div class="moving-movie-card">
+                <img src="/Assest/poster 8.jpg" alt="Movie Title">
+            </div>
+            <div class="moving-movie-card">
+                <img src="Assest/poster 9.jpg" alt="Movie Title">
             </div>
         </div>
-
-
-        <div class="form signup">
-            <div class="form-content">
-                <header>Signup</header>
-                <form action="#">
-                    <div class="field input-field">
-                        <input type="email" id="email" placeholder="Email" class="input">
-                    </div>
-
-                    <div class="field input-field">
-                        <input type="password" id="password" placeholder="Password" class="input">
-                        <i class='bx bx-hide eye' ></i>
-                    </div>
-
-                    <div class="field input-field">
-                        <input type="password" placeholder="Password" class="input">
-                        <i class='bx bx-hide eye' ></i>
-                    </div>
-
-
-                    <div class="field button-field">
-                        <input type="submit" id="register" value="Register"/>
-                    </div>
-
-                    <div class="form-link">
-                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
-                    </div>
-
-                </form>
-            </div>
+    </div>
+            </section>
+        </section>
+        
+        <section id="movie-grid-container">
+        </section>
+        <section id="search-results"></section>
+      </main>
+      
+      <script src="script.js"></script>
+      <footer>
+        <div class="left-container">
+            <h3>Created by :</h3>
+          <p>Fatiahi, Khaled</p>
+          <p>Alvarez, Justin Kenneth</p>
+          <p>Liang, Jun</p>
         </div>
-
-    </section>
-
-    <script src="script.js"></script>
-
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-analytics.js";
-        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
-
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyCUDyCC3Iu8wCKVb4J2pQ7I5hZqq8LbVpM",
-          authDomain: "myfirstproject-270b3.firebaseapp.com",
-          databaseURL: "https://myfirstproject-270b3-default-rtdb.firebaseio.com",
-          projectId: "myfirstproject-270b3",
-          storageBucket: "myfirstproject-270b3.appspot.com",
-          messagingSenderId: "250577619845",
-          appId: "1:250577619845:web:be05af2992ac01706152ec",
-          measurementId: "G-Q8PK033VMC"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const database = getDatabase(app);
-        const auth = getAuth();
-
-        register.addEventListener("click", (e) => {
-            var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
-
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Signed in 
-                const user = userCredential.user;
-
-                set(ref(database, "users/" + user.uid), {
-                    email: email
-                })
-
-                alert("user created!");
-                    // ...
-                 })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    
-                    alert(errorMessage);
-                });
-        })
-
-      </script>
-
-
-</body>
-</html>
+        <div class="right-container">
+            <h3>Support it by :</h3>
+          <img src="/Assest/MDB.jpg" alt="Logo">
+        </div>
+      </footer>      
+    </body>
+    </html>      

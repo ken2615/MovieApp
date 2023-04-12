@@ -25,11 +25,20 @@ requestAnimationFrame(autoScroll);
 const apiKey = "150379be7bc75039ef61f51c9ba9615e";
 
 async function fetchMovies(query, container) {
+  container.innerHTML = "";
   const response = await fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`
   );
   const data = await response.json();
-  displayMovies(data.results, container);
+
+  const categoryTitle = document.createElement("h2");
+  categoryTitle.textContent = "Search Results";
+  categoryTitle.classList.add("category-title");
+  container.appendChild(categoryTitle);
+
+  const movieSearchContainer = document.createElement("div");
+  container.appendChild(movieSearchContainer);
+  displayMovies(data.results, movieSearchContainer);
   showSearchResults();
 }
 
@@ -120,18 +129,18 @@ categories.forEach((category, index) => {
   const movieGridContainer = document.createElement("div");
   movieGridContainer.id = `movie-grid-container-${index}`;
   categoryContainer.appendChild(movieGridContainer);
-
   fetchMoviesByGenre(category, movieGridContainer);
 });
 
 const searchBtn = document.getElementById("searchBtn");
 const searchInput =document.getElementById("searchInput");
+const searchResultsContainer = document.querySelector("#search-results");
 
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const query = searchInput.value.trim();
   if (query.length > 0) {
-    const searchResultsContainer = document.querySelector("#search-results");
+    //const searchResultsContainer = document.querySelector("#search-results");
     fetchMovies(query, searchResultsContainer);
 
     // Show search results container and hide category containers
@@ -144,7 +153,7 @@ searchInput.addEventListener("keypress", (e) => {
     e.preventDefault();
     const query = searchInput.value.trim();
     if (query.length > 0) {
-      const searchResultsContainer = document.querySelector("#search-results");
+     // const searchResultsContainer = document.querySelector("#search-results");
       fetchMovies(query, searchResultsContainer);
 
       // Show search results container and hide category containers
@@ -155,7 +164,7 @@ searchInput.addEventListener("keypress", (e) => {
 
 
 const categoryBtns = document.querySelectorAll(".category-btn");
-
+// debugger;
 categoryBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     showCategoryResults(e.target.textContent);
@@ -163,6 +172,7 @@ categoryBtns.forEach((btn) => {
 });
 
 function showCategoryResults(category) {
+  // debugger;
   // Hide all category containers
   const allCategoryContainers = document.querySelectorAll("section[id^=category]");
   allCategoryContainers.forEach((container) => {
@@ -180,37 +190,6 @@ function showCategoryResults(category) {
 
 
 const backBtn = document.getElementById("backBtn");
-
-backBtn.addEventListener("click", () => {
-  showAllCategories();
-});
-
-function showAllCategories() {
-  const allCategoryContainers = document.querySelectorAll("section[id^=category]");
-  allCategoryContainers.forEach((container) => {
-    container.style.display = "block";
-  });
-}
-
-const searchResultsContainer = document.querySelector("#search-results");
-
-searchBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  const query = searchInput.value.trim();
-  if (query.length > 0) {
-    fetchMovies(query, searchResultsContainer);
-  }
-});
-
-searchInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    const query = searchInput.value.trim();
-    if (query.length > 0) {
-      fetchMovies(query, searchResultsContainer);
-    }
-  }
-});
 
 function showSearchResults() {
   // Hide all category containers

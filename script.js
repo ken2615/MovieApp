@@ -191,6 +191,7 @@ function showCategoryResults(category) {
 
 const backBtn = document.getElementById("backBtn");
 
+<<<<<<< HEAD
  
 backBtn.addEventListener("click", () => {
     showAllCategories();
@@ -203,6 +204,8 @@ backBtn.addEventListener("click", () => {
     });
   }
 
+=======
+>>>>>>> c1afa4e83a916d37ed70673cfdce6c493e5f8a0f
 function showSearchResults() {
   // Hide all category containers
   const allCategoryContainers = document.querySelectorAll("section[id^=category]");

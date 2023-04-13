@@ -191,6 +191,18 @@ function showCategoryResults(category) {
 
 const backBtn = document.getElementById("backBtn");
 
+ 
+backBtn.addEventListener("click", () => {
+    showAllCategories();
+  });
+  
+  function showAllCategories() {
+    const allCategoryContainers = document.querySelectorAll("section[id^=category]");
+     allCategoryContainers.forEach((container) => {
+     container.style.display = "block";
+    });
+  }
+
 function showSearchResults() {
   // Hide all category containers
   const allCategoryContainers = document.querySelectorAll("section[id^=category]");
